@@ -52,12 +52,12 @@ cd ..
 
 echo *******************************
 echo Installing FZF and Vim Pluggins
-cp .vimrc ~/.vimrc
+cp vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qa"
 
 echo ***************
 echo Installing Tmux
-cp .tmux.conf ~/.tmux.conf
+cp tmux.conf ~/.tmux.conf
 
 echo *********************
 echo Installing PathPicker
