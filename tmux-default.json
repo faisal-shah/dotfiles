@@ -1,0 +1,36 @@
+{
+  "segments": {
+    "right": [
+      {
+        "function": "powerline.segments.common.sys.cpu_load_percent"
+      },
+      {
+        "function": "powerline.segments.common.wthr.weather",
+        "args": {
+          "unit": "F",
+          "location_query": "houston, tx, usa",
+          "temp_coldest": 0.0,
+          "temp_hottest": 32.0
+        }
+      },
+      {
+        "function": "powerline.segments.common.time.date",
+        "args": {
+          "format": "%a, %b-%d %Y",
+          "istime": false
+        }
+      },
+      {
+        "function": "powerline.segments.common.time.date",
+        "name": "time",
+        "args": {
+          "format": "%I:%M %p",
+          "istime": true
+        }
+      },
+      {
+        "function": "powerline.segments.common.env.user"
+      }
+    ]
+  }
+}
