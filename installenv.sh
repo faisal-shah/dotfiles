@@ -6,6 +6,7 @@ export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 echo ***********************
 echo Installing apt packages
 sudo apt install automake autoconf build-essential pkg-config libevent-dev libncurses5-dev links git gdebi tree curl silversearcher-ag python3-pip ranger
+sudo apt install cowsay fortune
 
 echo ********************
 echo Installing Powerline
@@ -65,6 +66,11 @@ cp tmux.conf ~/.tmux.conf
 echo ***************
 echo Installing git
 cp gitconfig ~/.gitconfig
+
+echo **************************
+echo Installing .localshortcuts
+mkdir -p ~/.local/bin
+cp ./local/* ~/.local/bin
 
 echo *********************
 echo Installing PathPicker
