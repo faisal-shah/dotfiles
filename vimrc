@@ -159,6 +159,9 @@ let g:palenight_terminal_italics=1
 let g:solarized_contrast="high"
 colorscheme solarized
 
+set mouse=a
+set ttymouse=xterm2
+
 " highlight matching braces
 set showmatch
 
@@ -175,6 +178,11 @@ set wildmenu
 set cursorline
 " hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
 
+" easymotion highlight colors
+hi link EasyMotionTarget Search
+hi link EasyMotionTarget2First Search
+hi link EasyMotionTarget2Second Search
+hi link EasyMotionShade Comment
 
 """"""""""""""""""""""""""""""
 " Searching
@@ -197,15 +205,15 @@ set autoindent
 set smartindent
 
 " configure tabwidth and insert spaces instead of tabs
-set tabstop=2        " tab width is 4 spaces
-set shiftwidth=2     " indent also with 4 spaces
+set tabstop=4        " tab width is 4 spaces
+set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 
-" wrap lines at 80 chars.
-set textwidth=80
+" wrap lines at 79 chars.
+set textwidth=79
 
 " strip trailing whitespace upon writing to buffer of specified filetypes.
 augroup my_trim_whitespace
-  autocmd FileType c,cpp,make,vim autocmd BufWritePre <buffer> %s/\s\+$//e
+  autocmd FileType c,cpp,make,gitconfig,vim autocmd BufWritePre <buffer> %s/\s\+$//e
 augroup END
 
