@@ -75,7 +75,7 @@ cp ./local/* ~/.local/bin
 echo *********************
 echo Installing PathPicker
 git clone https://github.com/facebook/PathPicker.git
-cd debian
+cd PathPicker/debian/
 ./package.sh
 sudo gdebi ../fpp_0.7.2_noarch.deb
 
