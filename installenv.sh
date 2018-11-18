@@ -5,8 +5,9 @@ export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 echo ***********************
 echo Installing apt packages
-sudo apt install automake autoconf build-essential pkg-config libevent-dev libncurses5-dev links git gdebi tree curl silversearcher-ag python3-pip ranger
-sudo apt install cowsay fortune
+sudo apt install -y automake autoconf build-essential pkg-config libevent-dev
+sudo apt install -y libncurses5-dev links git gitk gdebi tree curl silversearcher-ag python3-pip
+sudo apt install -y cowsay fortune
 
 echo ********************
 echo Installing Powerline
@@ -59,18 +60,25 @@ echo Installing FZF and Vim Pluggins
 cp vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qa"
 
-echo ***************
-echo Installing Tmux
+echo *******************
+echo Copying Tmux Config
 cp tmux.conf ~/.tmux.conf
 
-echo ***************
-echo Installing git
+echo ******************
+echo Copying git Config
 cp gitconfig ~/.gitconfig
 
 echo **************************
 echo Installing .localshortcuts
 mkdir -p ~/.local/bin
 cp ./local/* ~/.local/bin
+
+echo *****************
+echo Installing Ranger
+git clone https://github.com/ranger/ranger.git
+cd ranger
+sudo make install
+cd ..
 
 echo *********************
 echo Installing PathPicker

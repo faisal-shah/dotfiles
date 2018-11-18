@@ -13,3 +13,6 @@ information won't shuw up in bash. More advanced shells like zsh or fish allow
 for a left and a right side ...
 
 Restart powerline daemone with: powerline-deamon --replace
+
+ctags, ranger, pathpicker, and tmux are installed from source. Make sure they
+are removed on the system before deploying.
