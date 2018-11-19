@@ -7,7 +7,42 @@ echo ***********************
 echo Installing apt packages
 sudo apt install -y automake autoconf build-essential pkg-config libevent-dev
 sudo apt install -y libncurses5-dev links git gitk gdebi tree curl silversearcher-ag python3-pip
-sudo apt install -y cowsay fortune ncdu
+sudo apt install -y cowsay fortune
+
+echo **************************
+echo Installing Universal Ctags
+git clone https://github.com/universal-ctags/ctags.git
+cd ctags
+./autogen.sh
+./configure --prefix=/usr/local
+make
+sudo make install
+cd ..
+
+echo *****************
+echo Installing Ranger
+git clone https://github.com/ranger/ranger.git
+cd ranger
+sudo make install
+cd ..
+
+echo *****************
+echo Installing ncdu
+git clone https://g.blicky.net/ncdu.git/
+cd ncdu
+autoreconf -i
+./configure --prefix=/usr/local
+make
+sudo make install
+cd ..
+
+echo ***********************************
+echo Installing PathPicker Version 0.7.2
+git clone https://github.com/facebook/PathPicker.git
+git checkout -b 0.7.2
+cd PathPicker/debian/
+./package.sh
+sudo gdebi ../fpp_0.7.2_noarch.deb
 
 echo ********************
 echo Installing Powerline
@@ -45,21 +80,6 @@ printf "\npowerline-daemon -q\nPOWERLINE_BASH_CONTINUATION=1\n" >> ~/.bashrc
 printf "POWERLINE_BASH_SELECT=1\n" >> ~/.bashrc
 printf ". %s/powerline/bindings/bash/powerline.sh\n" "$PWRLN_REPO_ROOT" >> ~/.bashrc
 
-echo **************************
-echo Installing Universal Ctags
-git clone https://github.com/universal-ctags/ctags.git
-cd ctags
-./autogen.sh
-./configure
-make
-sudo make install
-cd ..
-
-echo *******************************
-echo Installing FZF and Vim Pluggins
-cp vimrc ~/.vimrc
-vim -c "PlugInstall" -c "qa"
-
 echo *******************
 echo Copying Tmux Config
 cp tmux.conf ~/.tmux.conf
@@ -73,17 +93,8 @@ echo Installing .localshortcuts
 mkdir -p ~/.local/bin
 cp ./local/* ~/.local/bin
 
-echo *****************
-echo Installing Ranger
-git clone https://github.com/ranger/ranger.git
-cd ranger
-sudo make install
-cd ..
-
-echo *********************
-echo Installing PathPicker
-git clone https://github.com/facebook/PathPicker.git
-cd PathPicker/debian/
-./package.sh
-sudo gdebi ../fpp_0.7.2_noarch.deb
+echo *******************************
+echo Installing FZF and Vim Pluggins
+cp vimrc ~/.vimrc
+vim -c "PlugInstall" -c "qa"
 
