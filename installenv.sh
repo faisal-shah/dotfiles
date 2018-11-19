@@ -7,7 +7,7 @@ echo ***********************
 echo Installing apt packages
 sudo apt install -y automake autoconf build-essential pkg-config libevent-dev
 sudo apt install -y libncurses5-dev links git gitk gdebi tree curl silversearcher-ag python3-pip
-sudo apt install -y cowsay fortune
+sudo apt install -y cowsay fortune ncdu
 
 echo ********************
 echo Installing Powerline
