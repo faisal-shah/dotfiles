@@ -44,4 +44,4 @@
     s = status
 
 [credential]
-    helper = cache
+    helper = store
