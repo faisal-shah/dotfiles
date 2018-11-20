@@ -99,6 +99,9 @@ nnoremap <Leader>b :Buffers<CR>
 " Fuzzy search windows
 nnoremap <Leader>w :Windows<CR>
 
+" Fuzzy search windows
+nmap <Plug>(easymotion-prefix)f <Plug>(easymotion-s)
+
 " movement by screen line instead of file line (for text wrap)
 nnoremap j gj
 nnoremap <down> gj
