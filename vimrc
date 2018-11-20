@@ -85,6 +85,11 @@ set whichwrap+=<,>,h,l
 " Clear highlight
 nnoremap <Leader><Space> :noh<Return>:<Backspace>
 
+" Open Tagbar and jump to it (even if already open). Keep open after making
+" selection
+" nnoremap <Leader>t :TagbarOpenAutoClose<Return>:<Backspace>
+nnoremap <Leader>t :TagbarOpen fj<Return>:<Backspace>
+
 " Fuzzy search open file .. waiting for path argument
 nnoremap <Leader>f :Files<Space>
 
@@ -107,10 +112,10 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " Navigating tabs
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+"nnoremap <C-Left> :tabprevious<CR>
+"nnoremap <C-Right> :tabnext<CR>
+"nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+"nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 
 """"""""""""""""""""""""""""""
