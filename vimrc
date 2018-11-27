@@ -183,6 +183,9 @@ set report=0
 " Hitting TAB in command mode will show possible completions
 set wildmenu
 
+" Show only pop-up menu for omni completion - preview scratch buffer
+set completeopt=menu
+
 " Highlight current line
 set cursorline
 " hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
