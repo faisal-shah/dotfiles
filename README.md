@@ -5,6 +5,10 @@ If installing tmux from source, may need to modify get_tmux_version() in
 some reason, next-2.9 or whatever the version reports for the lastest from
 github messes with tmux and powerline doesn't show up.
 
+Make sure the pip3 show whatever command doesn't print out a message saying pip
+needs to be updated or anything like that. It uses the output as is to figure
+out the path where powerline is installed .. probably should fix that.
+
 Need to change the colors of the terminal to solarized dark.
 
 Need to modify
