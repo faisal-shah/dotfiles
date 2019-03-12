@@ -169,7 +169,7 @@ let g:solarized_contrast="high"
 colorscheme solarized
 
 set mouse=a
-set ttymouse=xterm2
+set ttymouse=sgr
 
 " highlight matching braces
 set showmatch
