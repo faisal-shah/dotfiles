@@ -71,6 +71,8 @@ let g:gutentags_generate_on_missing=1
 " split equalization upon window resize
 autocmd VimResized * wincmd =
 
+" Fzf :Buffers - jump to existing window if open
+let g:fzf_buffers_jump=1
 
 """"""""""""""""""""""""""""""
 " Key Mappings
@@ -100,8 +102,23 @@ nnoremap <Leader>b :Buffers<CR>
 " Fuzzy search windows
 nnoremap <Leader>w :Windows<CR>
 
-" Fuzzy search windows
+" Fuzzy search tags
+nnoremap <Leader>T :Tags<CR>
+
+" Fuzzy search in current buffer
+nnoremap <Leader>/ :BLines<CR>
+
+" Fuzzy search word under cursor
+nnoremap <Leader>s "zyiw:Ag <C-r>z<CR>
+
+" Easy motion, front or back
 nmap <Plug>(easymotion-prefix)f <Plug>(easymotion-s)
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " movement by screen line instead of file line (for text wrap)
 nnoremap j gj
@@ -169,6 +186,7 @@ let g:solarized_contrast="high"
 colorscheme solarized
 
 set mouse=a
+" ttymouse=sgr needed, otherwise mouse > column 220 or so doesn't work
 set ttymouse=sgr
 
 " highlight matching braces
@@ -223,6 +241,10 @@ set expandtab        " expand tabs to spaces
 
 " wrap lines at 79 chars.
 set textwidth=79
+
+" open splits to the right and bottom
+set splitbelow
+set splitright
 
 " strip trailing whitespace upon writing to buffer of specified filetypes.
 augroup my_trim_whitespace
