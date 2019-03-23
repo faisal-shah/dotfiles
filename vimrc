@@ -143,6 +143,9 @@ noremap <C-l> <C-w>l
 "nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 "nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
+" Set plus register as clipboard, to share with GUI and host
+set clipboard=unnamedplus
+
 
 """"""""""""""""""""""""""""""
 " Display
@@ -253,6 +256,6 @@ set splitright
 
 " strip trailing whitespace upon writing to buffer of specified filetypes.
 augroup my_trim_whitespace
-  autocmd FileType c,cpp,make,gitconfig,vim autocmd BufWritePre <buffer> %s/\s\+$//e
+  autocmd FileType c,cpp,make,gitconfig,python,vim autocmd BufWritePre <buffer> %s/\s\+$//e
 augroup END
 
