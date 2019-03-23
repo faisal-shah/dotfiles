@@ -31,6 +31,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'drmikehenry/vim-headerguard'
 Plug 'mbbill/undotree'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 filetype plugin indent on    " required
 
@@ -77,7 +79,6 @@ autocmd VimResized * wincmd =
 
 " Fzf :Buffers - jump to existing window if open
 let g:fzf_buffers_jump=1
-
 """"""""""""""""""""""""""""""
 " Key Mappings
 """"""""""""""""""""""""""""""
