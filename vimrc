@@ -12,29 +12,29 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'easymotion/vim-easymotion'
-Plug 'altercation/vim-colors-solarized'
-Plug 'jreybert/vimagit'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'vim-scripts/visualrepeat'
-Plug 'mileszs/ack.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'christoomey/vim-conflicted'
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/vim-slash'
 Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'drmikehenry/vim-headerguard'
-Plug 'mbbill/undotree'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-filetype plugin indent on    " required
+Plug 'easymotion/vim-easymotion'
+Plug 'machakann/vim-sandwich'
+Plug 'vim-scripts/visualrepeat'
+Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-slash'
+Plug 'junegunn/vim-peekaboo'
+Plug 'mbbill/undotree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-conflicted'
+" Plug 'drmikehenry/vim-headerguard'
+" Plug 'jreybert/vimagit'
 
 call plug#end()
 
@@ -42,9 +42,6 @@ call plug#end()
 """"""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""
-
-" Set to auto read when a file is changed from the outside
-set autoread
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -86,8 +83,6 @@ let g:fzf_buffers_jump=1
 " set leader key
 " let mapleader = ","
 
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
 " Clear highlight
@@ -166,16 +161,11 @@ set showcmd
 " show file in titlebar
 set title
 
-" show ruler - line and column number in status bar
-set ruler
-
 " show matching bracket for 0.2 seconds
 set matchtime=2
 
 " don't wrap long lines
 set nowrap
-" turn syntax highlighting on
-syntax enable
 
 " turn line numbers on
 set number relativenumber
@@ -200,14 +190,8 @@ set ttymouse=sgr
 " highlight matching braces
 set showmatch
 
-" Always show status line
-set laststatus=2
-
 " Show all changes
 set report=0
-
-" Hitting TAB in command mode will show possible completions
-set wildmenu
 
 " Show only pop-up menu for omni completion - preview scratch buffer
 set completeopt=menu
@@ -227,17 +211,12 @@ hi link EasyMotionShade Comment
 """"""""""""""""""""""""""""""
 
 set hlsearch                    " highlight matches
-set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
-
 
 """"""""""""""""""""""""""""""
 " Text, tab, indent related
 """"""""""""""""""""""""""""""
-
-" use indentation of previous line
-set autoindent
 
 " use intelligent indentation for C
 set smartindent
