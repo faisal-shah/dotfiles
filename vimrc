@@ -107,39 +107,26 @@ nnoremap <Leader><Space> :noh<Return>:<Backspace>
 
 " Open Tagbar and jump to it (even if already open). Keep open after making
 " selection
-" nnoremap <Leader>t :TagbarOpenAutoClose<Return>:<Backspace>
 nnoremap <Leader>t :TagbarOpen fj<Return>:<Backspace>
 
-" Fuzzy search open file .. waiting for path argument
+" Fuzzy searching shortcuts (FZF)
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>F :Files<Space>
-
-" Fuzzy search buffers
+nnoremap <Leader>F :Files<Space>            "Wait for path from user
 nnoremap <Leader>b :Buffers<CR>
-
-" Fuzzy search windows
 nnoremap <Leader>w :Windows<CR>
-
-" Fuzzy search tags
 nnoremap <Leader>T :Tags<CR>
-
-" Fuzzy search in current buffer
 nnoremap <Leader>/ :BLines<CR>
-
-" Fuzzy search word under cursor
-nnoremap <Leader>s "zyiw:Ag <C-r>z<CR>
-"
-" Fuzzy search helpgrep
-nnoremap <Leader>h :Helptags<CR>
-
-" Easy motion, front or back
-nmap <Plug>(easymotion-prefix)f <Plug>(easymotion-s)
+nnoremap <Leader>s "zyiw:Ag <C-r>z<CR>      "Word under cursor
+nnoremap <Leader>h :Helptags<CR>            "Search helpgrep
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Easy motion, front or back
+nmap <Plug>(easymotion-prefix)f <Plug>(easymotion-s)
 
 " movement by screen line instead of file line (for text wrap)
 nnoremap j gj
