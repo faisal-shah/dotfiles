@@ -97,7 +97,7 @@ vmap > >gv
 vmap < <gv
 
 " Play back macro in register q
-nnoremap Q @q`
+nnoremap Q @q
 
 " Delete till end of row in insert mode
 inoremap <C-D> <C-\><C-O>D
