@@ -86,6 +86,22 @@ let g:fzf_buffers_jump=1
 
 set whichwrap+=<,>,h,l
 
+" Yank till the end of line
+nnoremap Y y$
+
+" Yank line ignoring leading and trailing whitespace
+nnoremap <Leader>yy ^yg_
+
+" Indent visual mode, keep highlighted
+vmap > >gv
+vmap < <gv
+
+" Play back macro in register q
+nnoremap Q @q`
+
+" Delete till end of row in insert mode
+inoremap <C-D> <C-\><C-O>D
+
 " Clear highlight
 nnoremap <Leader><Space> :noh<Return>:<Backspace>
 

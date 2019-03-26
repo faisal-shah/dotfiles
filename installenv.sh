@@ -9,6 +9,13 @@ sudo apt install -y automake autoconf build-essential pkg-config libevent-dev
 sudo apt install -y libncurses5-dev links git gitk gdebi tree curl silversearcher-ag python3-pip
 sudo apt install -y cowsay fortune xsel
 
+echo ***************************
+echo Installing fd (file finder)
+mkdir -p fd-find && cd fd-find
+wget https://github.com/sharkdp/fd/releases/download/v7.3.0/fd_7.3.0_amd64.deb
+sudo gdebi fd_7.3.0_amd64.deb
+cd ..
+
 echo **************************
 echo Installing Universal Ctags
 git clone https://github.com/universal-ctags/ctags.git
