@@ -151,8 +151,8 @@ set noshowmode
 " get rid of airline delay in switching between normal and insert modes
 set ttimeoutlen=50
 
-" 8 lines above/below cursor when scrolling
-set scrolloff=8
+" 4 lines above/below cursor when scrolling
+set scrolloff=4
 
 " show type command in status bar
 set showcmd
