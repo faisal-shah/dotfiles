@@ -76,6 +76,7 @@ autocmd VimResized * wincmd =
 
 " Fzf :Buffers - jump to existing window if open
 let g:fzf_buffers_jump=1
+
 """"""""""""""""""""""""""""""
 " Key Mappings
 """"""""""""""""""""""""""""""
@@ -94,7 +95,8 @@ nnoremap <Leader><Space> :noh<Return>:<Backspace>
 nnoremap <Leader>t :TagbarOpen fj<Return>:<Backspace>
 
 " Fuzzy search open file .. waiting for path argument
-nnoremap <Leader>f :Files<Space>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>F :Files<Space>
 
 " Fuzzy search buffers
 nnoremap <Leader>b :Buffers<CR>
@@ -110,6 +112,9 @@ nnoremap <Leader>/ :BLines<CR>
 
 " Fuzzy search word under cursor
 nnoremap <Leader>s "zyiw:Ag <C-r>z<CR>
+"
+" Fuzzy search helpgrep
+nnoremap <Leader>h :Helptags<CR>
 
 " Easy motion, front or back
 nmap <Plug>(easymotion-prefix)f <Plug>(easymotion-s)
@@ -131,12 +136,6 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-
-" Navigating tabs
-"nnoremap <C-Left> :tabprevious<CR>
-"nnoremap <C-Right> :tabnext<CR>
-"nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-"nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 " Set plus register as clipboard, to share with GUI and host
 set clipboard=unnamedplus
@@ -217,9 +216,6 @@ set smartcase                   " ... unless they contain at least one capital l
 """"""""""""""""""""""""""""""
 " Text, tab, indent related
 """"""""""""""""""""""""""""""
-
-" use intelligent indentation for C
-set smartindent
 
 " configure tabwidth and insert spaces instead of tabs
 set tabstop=4        " tab width is 4 spaces
