@@ -151,6 +151,9 @@ set clipboard=unnamedplus
 " Display
 """"""""""""""""""""""""""""""
 
+" show tabline only if 2 or more tabs exist
+set showtabline=1
+
 " don't show mode when using airline
 set noshowmode
 
