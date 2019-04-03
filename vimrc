@@ -111,13 +111,16 @@ nnoremap <Leader>t :TagbarOpen fj<Return>:<Backspace>
 
 " Fuzzy searching shortcuts (FZF)
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>F :Files<Space>            "Wait for path from user
+" Wait for path from user
+nnoremap <Leader>F :Files<Space>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>T :Tags<CR>
 nnoremap <Leader>/ :BLines<CR>
-nnoremap <Leader>s "zyiw:Ag <C-r>z<CR>      "Word under cursor
-nnoremap <Leader>h :Helptags<CR>            "Search helpgrep
+" Word under cursor
+nnoremap <Leader>s "zyiw:Ag <C-r>z<CR>
+" Search helpgrep
+nnoremap <Leader>h :Helptags<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
