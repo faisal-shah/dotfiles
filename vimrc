@@ -19,10 +19,8 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'easymotion/vim-easymotion'
-Plug 'machakann/vim-sandwich'
+Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/visualrepeat'
-Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -33,8 +31,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-conflicted'
-" Plug 'drmikehenry/vim-headerguard'
-" Plug 'jreybert/vimagit'
+Plug 'mhinz/vim-signify'
 
 call plug#end()
 
@@ -42,11 +39,10 @@ call plug#end()
 """"""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""
-
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" specify version control systems for signify
+let g:signify_vcs_list = [ 'git', 'tfs' ]
 
 " airline customization
-" let g:airline_theme='molokai'
 let g:airline_theme='powerlineish'
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
@@ -75,7 +71,7 @@ let g:gutentags_generate_on_missing=1
 autocmd VimResized * wincmd =
 
 " Fzf :Buffers - jump to existing window if open
-let g:fzf_buffers_jump=1
+" let g:fzf_buffers_jump=1
 
 """"""""""""""""""""""""""""""
 " Key Mappings
@@ -83,6 +79,18 @@ let g:fzf_buffers_jump=1
 
 " set leader key
 " let mapleader = ","
+
+" movement by screen line instead of file line (for text wrap)
+nnoremap j gj
+nnoremap <down> gj
+nnoremap k gk
+nnoremap <up> gk
+
+" Move between splits (windows)
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 set whichwrap+=<,>,h,l
 
@@ -128,23 +136,14 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Easy motion, front or back
-nmap <Plug>(easymotion-prefix)f <Plug>(easymotion-s)
-
-" movement by screen line instead of file line (for text wrap)
-nnoremap j gj
-nnoremap <down> gj
-nnoremap k gk
-nnoremap <up> gk
-
-" Move between splits (windows)
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-
 " Set plus register as clipboard, to share with GUI and host
 set clipboard=unnamedplus
+
+" vim-sneak, one character mappings
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 
 """"""""""""""""""""""""""""""
@@ -182,12 +181,10 @@ set number relativenumber
 set regexpengine=1
 set lazyredraw
 set ttyfast
-set synmaxcol=200
+set synmaxcol=300
 
 " Colortheme options
 set background=dark
-set t_Co=256
-let g:palenight_terminal_italics=1
 let g:solarized_contrast="high"
 colorscheme solarized
 
@@ -206,13 +203,9 @@ set completeopt=menu
 
 " Highlight current line
 set cursorline
-" hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
 
-" easymotion highlight colors
-hi link EasyMotionTarget Search
-hi link EasyMotionTarget2First Search
-hi link EasyMotionTarget2Second Search
-hi link EasyMotionShade Comment
+" vim-sneak label mode
+let g:sneak#label = 1
 
 """"""""""""""""""""""""""""""
 " Searching
