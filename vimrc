@@ -23,6 +23,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/visualrepeat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'zackhsi/fzf-tags'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-slash'
 Plug 'junegunn/vim-peekaboo'
@@ -126,7 +127,8 @@ nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>T :Tags<CR>
 nnoremap <Leader>/ :BLines<CR>
 " Word under cursor
-nnoremap <Leader>s "zyiw:Ag <C-r>z<CR>
+nnoremap <Leader>s :Ag <c-r><c-w><CR>
+nmap <C-]> <Plug>(fzf_tags)
 " Search helpgrep
 nnoremap <Leader>h :Helptags<CR>
 
