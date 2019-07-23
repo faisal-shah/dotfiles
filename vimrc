@@ -28,7 +28,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-slash'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-conflicted'
@@ -186,9 +187,11 @@ set ttyfast
 set synmaxcol=300
 
 " Colortheme options
+set termguicolors
 set background=dark
-let g:solarized_contrast="high"
-colorscheme solarized
+colorscheme solarized8
+"let g:solarized_contrast="high"
+"colorscheme solarized
 
 set mouse=a
 " ttymouse=sgr needed, otherwise mouse > column 220 or so doesn't work
