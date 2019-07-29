@@ -34,6 +34,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-conflicted'
 Plug 'mhinz/vim-signify'
+Plug 'sheerun/vim-polyglot'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
@@ -68,6 +70,12 @@ let g:airline_skip_empty_sections = 1
 " gutentags don't generate on new, rather generate on missing
 let g:gutentags_generate_on_new=0
 let g:gutentags_generate_on_missing=1
+
+" better_whitespace options
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitelines_at_eof=1
+let g:strip_whitespace_confirm=0
 
 " split equalization upon window resize
 autocmd VimResized * wincmd =
@@ -235,9 +243,3 @@ set textwidth=79
 " open splits to the right and bottom
 set splitbelow
 set splitright
-
-" strip trailing whitespace upon writing to buffer of specified filetypes.
-augroup my_trim_whitespace
-  autocmd FileType c,cpp,make,gitconfig,python,vim autocmd BufWritePre <buffer> %s/\s\+$//e
-augroup END
-
