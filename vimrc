@@ -30,12 +30,14 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'lifepillar/vim-solarized8'
+Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-conflicted'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'brooth/far.vim'
 
 call plug#end()
 
