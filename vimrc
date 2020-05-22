@@ -222,6 +222,18 @@ set cursorline
 " vim-sneak label mode
 let g:sneak#label = 1
 
+" Set cursor in different modes
+if &term =~ "xterm"
+    " use blinking block cursor in insert and replace mode
+    let &t_SI = "\e[1 q"
+    let &t_SR = "\e[1 q"
+    " use solid block cursor otherwise
+    let &t_EI = "\e[2 q"
+    " set the cursor to solid block when starting Vim, could have been set
+    " differently in the terminal previously
+    silent !echo -en "\e[2 q"
+endif
+
 """"""""""""""""""""""""""""""
 " Searching
 """"""""""""""""""""""""""""""

@@ -1,0 +1,12 @@
+set editing-mode vi
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[1 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
+# Ctrl-Left
+"\e[1;5D": backward-word
+# Ctrl-Right
+"\e[1;5C": forward-word
