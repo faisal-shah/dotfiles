@@ -51,7 +51,7 @@ let g:signify_vcs_list = [ 'git', 'tfs' ]
 " airline customization
 let g:airline_theme='powerlineish'
 let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 "Show tabs if only one is enabled.
 let g:airline#extensions#tabline#enabled = 1
 "enable/disable displaying open splits per tab (only when tabs are opened). >
@@ -167,7 +167,7 @@ map T <Plug>Sneak_T
 set showtabline=1
 
 " don't show mode when using airline
-set noshowmode
+"set noshowmode
 
 " get rid of airline delay in switching between normal and insert modes
 set ttimeoutlen=50
