@@ -38,6 +38,7 @@ Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'brooth/far.vim'
+Plug 'dhruvasagar/vim-zoom'
 
 call plug#end()
 
@@ -45,6 +46,9 @@ call plug#end()
 """"""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""
+" Case sensitive matching for searching tag file. Much quicker!
+set tagcase=match
+
 " specify version control systems for signify
 let g:signify_vcs_list = [ 'git', 'tfs' ]
 
@@ -72,6 +76,33 @@ let g:airline_skip_empty_sections = 1
 " gutentags don't generate on new, rather generate on missing
 let g:gutentags_generate_on_new=0
 let g:gutentags_generate_on_missing=1
+let g:gutentags_ctags_exclude = [
+      \ 'build',
+      \ 'ChibiOS_18.2.x',
+      \ 'ChibiOS_20.x.x',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'cache',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
 
 " better_whitespace options
 let g:better_whitespace_enabled=1
