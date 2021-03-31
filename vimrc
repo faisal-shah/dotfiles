@@ -1,13 +1,10 @@
-set nocompatible              " be iMproved, required
-
-
 """"""""""""""""""""""""""""""
 " Vim-plug
 """"""""""""""""""""""""""""""
 
 " Download vim-plug if not already installed
 if empty(glob("~/.vim/autoload/plug.vim"))
-  execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -28,17 +25,16 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-slash'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
-"Plug 'altercation/vim-colors-solarized'
 Plug 'lifepillar/vim-solarized8'
 Plug 'sainnhe/gruvbox-material'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'rbong/vim-crystalline'
 Plug 'christoomey/vim-conflicted'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'brooth/far.vim'
 Plug 'dhruvasagar/vim-zoom'
+Plug 'semanser/vim-outdated-plugins'
 
 call plug#end()
 
@@ -49,79 +45,22 @@ call plug#end()
 " Case sensitive matching for searching tag file. Much quicker!
 set tagcase=match
 
-" specify version control systems for signify
-let g:signify_vcs_list = [ 'git', 'tfs' ]
-
-" airline customization
-let g:airline_theme='powerlineish'
-let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 0
-"Show tabs if only one is enabled.
-let g:airline#extensions#tabline#enabled = 1
-"enable/disable displaying open splits per tab (only when tabs are opened). >
-let g:airline#extensions#tabline#show_splits = 1
-" enable/disable displaying buffers with a single tab
-let g:airline#extensions#tabline#show_buffers = 1
-" tab number
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
-" remove the filetype part
-let g:airline_section_x=''
-" remove the encoding part
-let g:airline_section_y=''
-" remove separators for empty sections
-let g:airline_skip_empty_sections = 1
-
-" gutentags don't generate on new, rather generate on missing
-let g:gutentags_generate_on_new=0
-let g:gutentags_generate_on_missing=1
-let g:gutentags_ctags_exclude = [
-      \ 'build',
-      \ 'ChibiOS_18.2.x',
-      \ 'ChibiOS_20.x.x',
-      \ 'dist',
-      \ '*sites/*/files/*',
-      \ 'bin',
-      \ 'cache',
-      \ '*.map',
-      \ '*.bak',
-      \ '*.zip',
-      \ '*.pyc',
-      \ '*.class',
-      \ '*.csproj',
-      \ '*.tmp',
-      \ '*.csproj.user',
-      \ '*.cache',
-      \ '*.pdb',
-      \ 'tags*',
-      \ 'cscope.*',
-      \ '*.exe', '*.dll',
-      \ '*.mp3', '*.ogg', '*.flac',
-      \ '*.swp', '*.swo',
-      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
-      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
-      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
-      \ ]
-
-" better_whitespace options
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-let g:strip_whitelines_at_eof=1
-let g:strip_whitespace_confirm=0
-
 " split equalization upon window resize
 autocmd VimResized * wincmd =
 
-" Fzf :Buffers - jump to existing window if open
-" let g:fzf_buffers_jump=1
+" open splits to the right and bottom
+set splitbelow
+set splitright
+
+" Set plus register as clipboard, to share with GUI and host
+set clipboard=unnamedplus
 
 """"""""""""""""""""""""""""""
 " Key Mappings
 """"""""""""""""""""""""""""""
 
-" set leader key
-" let mapleader = ","
+" set leader key, default is \, but set anyways
+let mapleader = "\\"
 
 " movement by screen line instead of file line (for text wrap)
 nnoremap j gj
@@ -180,9 +119,6 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Set plus register as clipboard, to share with GUI and host
-set clipboard=unnamedplus
-
 " vim-sneak, one character mappings
 map f <Plug>Sneak_f
 map F <Plug>Sneak_F
@@ -193,12 +129,6 @@ map T <Plug>Sneak_T
 """"""""""""""""""""""""""""""
 " Display
 """"""""""""""""""""""""""""""
-
-" show tabline only if 2 or more tabs exist
-set showtabline=1
-
-" don't show mode when using airline
-"set noshowmode
 
 " get rid of airline delay in switching between normal and insert modes
 set ttimeoutlen=50
@@ -211,6 +141,9 @@ set showcmd
 
 " show file in titlebar
 set title
+
+" always show status line
+set laststatus=2
 
 " show matching bracket for 0.2 seconds
 set matchtime=2
@@ -230,9 +163,8 @@ set synmaxcol=300
 " Colortheme options
 set termguicolors
 set background=dark
-colorscheme solarized8
-"let g:solarized_contrast="high"
-"colorscheme solarized
+" Per recommendation by solarized8 plugin author..
+autocmd vimenter * ++nested colorscheme solarized8
 
 set mouse=a
 " ttymouse=sgr needed, otherwise mouse > column 220 or so doesn't work
@@ -250,9 +182,6 @@ set completeopt=menu
 " Highlight current line
 set cursorline
 
-" vim-sneak label mode
-let g:sneak#label = 1
-
 " Set cursor in different modes
 if &term =~ "xterm"
     " use blinking block cursor in insert and replace mode
@@ -269,9 +198,9 @@ endif
 " Searching
 """"""""""""""""""""""""""""""
 
-set hlsearch                    " highlight matches
-set ignorecase                  " searches are case insensitive...
-set smartcase                   " ... unless they contain at least one capital letter
+set hlsearch   " highlight matches
+set ignorecase " searches are case insensitive...
+set smartcase  " ... unless they contain at least one capital letter
 
 """"""""""""""""""""""""""""""
 " Text, tab, indent related
@@ -281,27 +210,131 @@ set smartcase                   " ... unless they contain at least one capital l
 set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
+set autoindent
+filetype plugin indent on
 
 " wrap lines at 79 chars.
 set textwidth=79
 
-" open splits to the right and bottom
-set splitbelow
-set splitright
 
+""""""""""""""""""""
+"" Plugin Related ""
+""""""""""""""""""""
+
+" vim-sneak label mode
+let g:sneak#label = 1
+
+" specify version control systems for signify
+let g:signify_vcs_list = [ 'git', 'tfs' ]
+
+" gutentags don't generate on new, rather generate on missing
+let g:gutentags_generate_on_new=0
+let g:gutentags_generate_on_missing=1
+"let g:gutentags_file_list_command ='ag -l'
+"let g:gutentags_trace=1
+"let g:gutentags_file_list_command = {
+"        \ 'markers': {
+"        \ '.git': 'git ls-files',
+"        \ },
+"        \ }
+let g:gutentags_ctags_exclude = [
+            \ 'build',
+            \ 'ChibiOS_18.2.x',
+            \ 'ChibiOS_20.x.x',
+            \ 'dist',
+            \ '*sites/*/files/*',
+            \ 'bin',
+            \ 'cache',
+            \ '*.map',
+            \ '*.bak',
+            \ '*.zip',
+            \ '*.pyc',
+            \ '*.class',
+            \ '*.csproj',
+            \ '*.tmp',
+            \ '*.csproj.user',
+            \ '*.cache',
+            \ '*.pdb',
+            \ 'tags*',
+            \ 'cscope.*',
+            \ '*.exe', '*.dll',
+            \ '*.mp3', '*.ogg', '*.flac',
+            \ '*.swp', '*.swo',
+            \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+            \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+            \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+            \ ]
+
+" better_whitespace options
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitelines_at_eof=1
+let g:strip_whitespace_confirm=0
+
+" Fzf :Buffers - jump to existing window if open
+" let g:fzf_buffers_jump=1
+
+" FZF BD Command to search buffers for deletion
 function! s:list_buffers()
-  redir => list
-  silent ls
-  redir END
-  return split(list, "\n")
+    redir => list
+    silent ls
+    redir END
+    return split(list, "\n")
 endfunction
 
 function! s:delete_buffers(lines)
-  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+    execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
 endfunction
 
 command! BD call fzf#run(fzf#wrap({
-  \ 'source': s:list_buffers(),
-  \ 'sink*': { lines -> s:delete_buffers(lines) },
-  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-\ }))
+            \ 'source': s:list_buffers(),
+            \ 'sink*': { lines -> s:delete_buffers(lines) },
+            \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+            \ }))
+
+command! -nargs=? Apropos call fzf#run(fzf#wrap({
+            \ 'source': 'man -k -s 1 '.shellescape(<q-args>).' | cut -d " " -f 1',
+            \ 'sink': 'tab Man',
+            \ 'options': ['--preview', 'MANPAGER=cat MANWIDTH='.(&columns/2-4).' man {}'
+            \ ]}))
+
+" Vim-Crystalline Settings
+function! StatusLine(current, width)
+    let l:s = ''
+
+    if a:current
+        let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+    else
+        let l:s .= '%#CrystallineInactive#'
+    endif
+    let l:s .= ' %f%h%w%m%r '
+    if a:current
+        let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+    endif
+
+    let l:s .= '%='
+    if a:current
+        let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+        let l:s .= crystalline#left_mode_sep('')
+    endif
+    if a:width > 80
+        let l:s .= ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+    else
+        let l:s .= ' '
+    endif
+
+    return l:s
+endfunction
+
+function! TabLine()
+    let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
+    return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+endfunction
+
+let g:crystalline_enable_sep = 1
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'molokai'
+
+set showtabline=2
+set guioptions-=e
