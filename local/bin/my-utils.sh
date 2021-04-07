@@ -7,9 +7,9 @@ ghrelease() {
 # Installs a local or remote(http/https) deb package and removes it after installation
 installdeb() {
 	set -e
-	loc="/tmp/install.deb"
+	loc="./install.deb"
 	case $1 in
-	http*) sudo wget -O "$loc" $1;;
+	http*) wget -O "$loc" $1;;
 	*) loc="$1"
 	esac
 	sudo dpkg -i "$loc"

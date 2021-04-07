@@ -1,3 +1,4 @@
 alias fd='fdfind'
 alias git-root='cd_git_root'
-alias cat='bat --paging=never'
+#alias cat='bat --paging=never'
+alias cat='bat'
