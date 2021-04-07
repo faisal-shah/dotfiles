@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-dispatch'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
@@ -125,6 +126,8 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
+" Git status
+nnoremap <Leader>g :Gstatus<CR>
 
 """"""""""""""""""""""""""""""
 " Display
@@ -164,7 +167,7 @@ set synmaxcol=300
 set termguicolors
 set background=dark
 " Per recommendation by solarized8 plugin author..
-autocmd vimenter * ++nested colorscheme solarized8
+autocmd vimenter * ++nested colorscheme gruvbox-material
 
 set mouse=a
 " ttymouse=sgr needed, otherwise mouse > column 220 or so doesn't work
@@ -223,7 +226,7 @@ set textwidth=79
 
 " vim-sneak label mode
 let g:sneak#label = 1
-
+"
 " specify version control systems for signify
 let g:signify_vcs_list = [ 'git', 'tfs' ]
 
@@ -240,7 +243,7 @@ let g:gutentags_generate_on_missing=1
 let g:gutentags_ctags_exclude = [
             \ 'build',
             \ 'ChibiOS_18.2.x',
-            \ 'ChibiOS_20.x.x',
+            "\ 'ChibiOS_20.x.x',
             \ 'dist',
             \ '*sites/*/files/*',
             \ 'bin',

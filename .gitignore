@@ -27,7 +27,4 @@ cscope.in.out
 cscope.po.out
 
 # Ignore generated stuff
-PathPicker/
-ctags/
-ranger/
-ncdu/
+bat-extras/
