@@ -44,7 +44,7 @@ echo "*********************"
 echo "Installing bat-extras"
 git clone https://github.com/eth-p/bat-extras.git
 cd bat-extras
-./build.sh --install --prefix=~/.local --no-verify
+./build.sh --install --prefix=~/.local
 cd ..
 
 echo "****************"
