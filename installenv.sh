@@ -58,6 +58,12 @@ printf "source ~/.local/bin/fzf-bash-completion.sh\n" >> ~/.bashrc
 printf "bind -x '\"\\\\t\": fzf_bash_completion'\n" >> ~/.bashrc
 printf "\nexport FORGIT_COPY_CMD='xsel -b'\n" >> ~/.bashrc
 
+printf "export FZF_DEFAULT_COMMAND='fdfind --type file --follow --color=always'\n" >> ~/.bashrc
+printf "export FZF_DEFAULT_OPTS='--ansi'\n" >> ~/.bashrc
+printf "export FZF_CTRL_T_COMMAND="'"$FZF_DEFAULT_COMMAND"'"\n" >> ~/.bashrc
+printf "export FZF_CTRL_T_OPTS=\"--height 40% --layout reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'\"\n" >> ~/.bashrc
+printf "export FZF_ALT_C_OPTS=\"--preview 'tree -C {} | head -200'\"\n" >> ~/.bashrc
+
 echo "********************"
 echo "Copying Config Files"
 mkdir -p ~/.local/bin
