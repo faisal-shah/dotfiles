@@ -1,23 +1,27 @@
 # dotfiles
+The core:
+* vim
+* git
+* tmux
+* fzf
+* ripgrep
 
-If installing tmux from source, may need to modify get_tmux_version() in
-~/.local/lib/python3.6/site-packages/powerline/bindings/tmux/__init__.py. For
-some reason, next-2.9 or whatever the version reports for the lastest from
-github messes with tmux and powerline doesn't show up.
+Other:
+* powerline (bling bling!)
+* GruvBox theme for Konsole
+* bat (pretty cat replacement)
+* delta (pretty diff replacement)
+* keybinds, navigation and git helpers (forgit among others...)
 
-Make sure the pip3 show whatever command doesn't print out a message saying pip
-needs to be updated or anything like that. It uses the output as is to figure
-out the path where powerline is installed .. probably should fix that.
+Install environment with:
+```
+$./installenv.sh
+```
 
-Need to change the colors of the terminal to solarized dark.
+The script is totally not idempotent. It will keep appending to your .bashrc each time you run the thing. Also, doesn't clean up particularly well. Thankfully, it uses apt and gdebi to install most of the packages - which are (I think) idempotent in nature.
 
-Need to modify
-~/.local/lib/python3.6/site-packages/powerline/config_files/config.json so that
-shell["theme"] is "default_leftonly", or else git status information won't shuw
-up in bash. More advanced shells like zsh or fish allow for a left and a right
-side ...
+Bunch of packages from standard Ubuntu package repos (Need 20.10+ for latest ripgrep version ... required for bat-extras).
 
-Restart powerline daemone with: powerline-deamon --replace
+Vim and Git PPAs are used to get the latest versions of them.
 
-ctags, ranger, pathpicker, ncdu, and tmux are installed from source. Make sure
-they are removed on the system before deploying.
+Some programs installed from github - again for the latest versions.
