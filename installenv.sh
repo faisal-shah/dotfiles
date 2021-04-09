@@ -49,6 +49,7 @@ cd ..
 
 echo "****************"
 echo "Updating .bashrc"
+printf "\nexport EDITOR=\"vim\"\n"
 printf "\nsource ~/.local/bin/forgit.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/cd_git_root.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/fzf_git_functions.sh\n" >> ~/.bashrc
@@ -76,6 +77,7 @@ cp config_files/bash_aliases ~/.bash_aliases
 
 echo "************************"
 echo "Adding git configuration"
+git config --global core.editor "vim"
 git config --global alias.addm 'add -u'
 git config --global alias.br 'branch'
 git config --global alias.ba 'branch -av'
