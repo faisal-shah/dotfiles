@@ -107,3 +107,5 @@ git config --global alias.resh 'reset --soft HEAD'
 git config --global alias.s 'status'
 git config --global delta.line-numbers true
 git config --global delta.side-by-side true
+git config --global diff.tool "vimdiff"
+git config --global difftool.prompt false
