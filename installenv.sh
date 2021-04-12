@@ -78,6 +78,7 @@ cp config_files/bash_aliases ~/.bash_aliases
 echo "************************"
 echo "Adding git configuration"
 git config --global core.editor "vim"
+git config --global core.pager "delta"
 git config --global alias.addm 'add -u'
 git config --global alias.br 'branch'
 git config --global alias.ba 'branch -av'
@@ -105,7 +106,12 @@ git config --global alias.rehh 'reset --hard HEAD'
 git config --global alias.remh 'reset --mixed HEAD'
 git config --global alias.resh 'reset --soft HEAD'
 git config --global alias.s 'status'
-git config --global delta.line-numbers true
-git config --global delta.side-by-side true
+git config --global delta.line-numbers "true"
+git config --global delta.side-by-side "true"
+git config --global delta.navigate "true"
+git config --global delta.keep-plus-minus-markers "true"
+git config --global delta.inspect-raw-lines "true"
 git config --global diff.tool "vimdiff"
-git config --global difftool.prompt false
+git config --global diff.colorMoved "default"
+git config --global difftool.prompt "false"
+git config --global interactive.diffFilter "delta --color-only"
