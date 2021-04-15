@@ -62,7 +62,7 @@ printf "\nexport FORGIT_COPY_CMD='xsel -b'\n" >> ~/.bashrc
 printf "export FZF_DEFAULT_COMMAND='fdfind --type file --follow --color=always'\n" >> ~/.bashrc
 printf "export FZF_DEFAULT_OPTS='--ansi'\n" >> ~/.bashrc
 printf "export FZF_CTRL_T_COMMAND="'"$FZF_DEFAULT_COMMAND"'"\n" >> ~/.bashrc
-printf "export FZF_CTRL_T_OPTS=\"--height 40% --layout reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'\"\n" >> ~/.bashrc
+printf "export FZF_CTRL_T_OPTS=\"--height 40%% --layout reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'\"\n" >> ~/.bashrc
 printf "export FZF_ALT_C_OPTS=\"--preview 'tree -C {} | head -200'\"\n" >> ~/.bashrc
 
 echo "********************"
@@ -71,6 +71,7 @@ mkdir -p ~/.local/bin
 curl -o ~/.local/bin/fzf-bash-completion.sh -L 'https://raw.githubusercontent.com/lincheney/fzf-tab-completion/master/bash/fzf-bash-completion.sh'
 curl -o ~/.local/bin/forgit.sh -L 'https://git.io/forgit'
 cp ./local/bin/* ~/.local/bin
+mkdir -p ~/.local/share/konsole
 cp ./local/share/konsole/* ~/.local/share/konsole
 cp config_files/tmux.conf ~/.tmux.conf
 cp config_files/bash_aliases ~/.bash_aliases
