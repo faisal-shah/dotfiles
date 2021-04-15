@@ -43,6 +43,23 @@ call plug#end()
 """"""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""
+
+function! IsWSL()
+    if has("unix")
+        let lines = readfile("/proc/version")
+        if lines[0] =~ "Microsoft"
+            return 1
+        endif
+    endif
+    return 0
+endfunction
+
+"https://superuser.com/questions/1284561/why-is-vim-starting-in-replace-mode
+if IsWSL()
+    set t_u7=
+    set ambw=double
+endif
+
 " Case sensitive matching for searching tag file. Much quicker!
 set tagcase=match
 
@@ -127,7 +144,7 @@ map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
 " Git status
-nnoremap <Leader>g :Gstatus<CR>
+nnoremap <Leader>g :Git<CR>
 
 """"""""""""""""""""""""""""""
 " Display
