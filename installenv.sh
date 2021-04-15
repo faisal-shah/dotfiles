@@ -55,7 +55,14 @@ cd ..
 
 echo "****************"
 echo "Updating .bashrc"
-printf "\nexport EDITOR=\"vim\"\n"
+printf "\nexport HISTSIZE=\n" >> ~/.bashrc
+printf "export HISTFILSIZE=\n" >> ~/.bashrc
+printf "export HISTTIMEFORMAT=\"%%Y/%%m/%%d %%H:%%M:%%S:   \"\n" >> ~/.bashrc
+printf "export EDITOR=\"vim\"\n"
+printf "### Disable Ctrl-S and Ctrl-Q\n" >> ~/.bashrc
+printf "[[ "'$-'" =~ i]] && stty -ixoff -ixon\n" >> ~/.bashrc
+printf "###Fix startup delay\n###https://blog.lxgr.net/posts/2014/05/15/vim-tmux-startup-delay/\n" >> ~/.bashrc
+printf "unset SESSION_MANAGER\n" >> ~/.bashrc
 printf "\nsource ~/.local/bin/forgit.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/cd_git_root.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/fzf_git_functions.sh\n" >> ~/.bashrc
