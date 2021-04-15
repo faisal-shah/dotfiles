@@ -11,20 +11,26 @@ sudo add-apt-repository --yes ppa:jonathonf/vim
 sudo add-apt-repository --yes ppa:git-core/ppa
 sudo apt-get update
 sudo apt install --yes build-essential libncurses6 gdebi tree curl \
-                    python3-pip ripgrep xsel xclip fonts-powerline ncdu \
+                    python3-pip ripgrep xsel xclip ncdu \
                     universal-ctags fd-find ranger cowsay fortune git vim-gtk3
 
-echo "*************************************"
-echo "Installing Powerline (update .bashrc)"
-pip3 install --user psutil
-pip3 install --user powerline-status
-PWRLN_REPO_ROOT="$(pip3 show powerline-status | awk '{if ($1=="Location:") print $2}')"
-PWRLN_PATH="$PWRLN_REPO_ROOT"/powerline
-cp -f config_files/tmux-default.json "$PWRLN_PATH"/config_files/themes/tmux/default.json
+# Don't install powerline if in WSL
+if ! grep -q Microsoft /proc/version; then
+    sudo apt install --yes fonts-powerline
 
-printf "\npowerline-daemon -q\nPOWERLINE_BASH_CONTINUATION=1\n" >> ~/.bashrc
-printf "POWERLINE_BASH_SELECT=1\n" >> ~/.bashrc
-printf "source %s/powerline/bindings/bash/powerline.sh\n" "$PWRLN_REPO_ROOT" >> ~/.bashrc
+    echo "*************************************"
+    echo "Installing Powerline (update .bashrc)"
+    pip3 install --user psutil
+    pip3 install --user powerline-status
+    PWRLN_REPO_ROOT="$(pip3 show powerline-status | awk '{if ($1=="Location:") print $2}')"
+    PWRLN_PATH="$PWRLN_REPO_ROOT"/powerline
+    cp -f config_files/tmux-default.json "$PWRLN_PATH"/config_files/themes/tmux/default.json
+
+    printf "\npowerline-daemon -q\nPOWERLINE_BASH_CONTINUATION=1\n" >> ~/.bashrc
+    printf "POWERLINE_BASH_SELECT=1\n" >> ~/.bashrc
+    printf "source %s/powerline/bindings/bash/powerline.sh\n" "$PWRLN_REPO_ROOT" >> ~/.bashrc
+fi
+
 
 echo "******************************"
 echo "Installing FZF and Vim Plugins"
@@ -55,14 +61,16 @@ printf "source ~/.local/bin/cd_git_root.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/fzf_git_functions.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/fzf_git_keybindings.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/my-utils.sh\n" >> ~/.bashrc
-printf "source ~/.local/bin/fzf-bash-completion.sh\n" >> ~/.bashrc
-printf "bind -x '\"\\\\t\": fzf_bash_completion'\n" >> ~/.bashrc
+printf "if ! grep -q Microsoft /proc/version; then\n" >> ~/.bashrc
+printf "    source ~/.local/bin/fzf-bash-completion.sh\n" >> ~/.bashrc
+printf "    bind -x '\"\\\\t\": fzf_bash_completion'\n" >> ~/.bashrc
+printf "fi\n" >> ~/.bashrc
 printf "\nexport FORGIT_COPY_CMD='xsel -b'\n" >> ~/.bashrc
 
 printf "export FZF_DEFAULT_COMMAND='fdfind --type file --follow --color=always'\n" >> ~/.bashrc
 printf "export FZF_DEFAULT_OPTS='--ansi'\n" >> ~/.bashrc
 printf "export FZF_CTRL_T_COMMAND="'"$FZF_DEFAULT_COMMAND"'"\n" >> ~/.bashrc
-printf "export FZF_CTRL_T_OPTS=\"--height 40% --layout reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'\"\n" >> ~/.bashrc
+printf "export FZF_CTRL_T_OPTS=\"--height 40%% --layout reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'\"\n" >> ~/.bashrc
 printf "export FZF_ALT_C_OPTS=\"--preview 'tree -C {} | head -200'\"\n" >> ~/.bashrc
 
 echo "********************"
@@ -71,6 +79,7 @@ mkdir -p ~/.local/bin
 curl -o ~/.local/bin/fzf-bash-completion.sh -L 'https://raw.githubusercontent.com/lincheney/fzf-tab-completion/master/bash/fzf-bash-completion.sh'
 curl -o ~/.local/bin/forgit.sh -L 'https://git.io/forgit'
 cp ./local/bin/* ~/.local/bin
+mkdir -p ~/.local/share/konsole
 cp ./local/share/konsole/* ~/.local/share/konsole
 cp config_files/tmux.conf ~/.tmux.conf
 cp config_files/bash_aliases ~/.bash_aliases
