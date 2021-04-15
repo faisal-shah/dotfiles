@@ -56,6 +56,10 @@ set splitright
 " Set plus register as clipboard, to share with GUI and host
 set clipboard=unnamedplus
 
+if has("patch-8.1.0360")
+    set diffopt+=internal,algorithm:patience,indent-heuristic,iwhite,iwhiteeol
+endif
+
 """"""""""""""""""""""""""""""
 " Key Mappings
 """"""""""""""""""""""""""""""
@@ -74,6 +78,12 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+
+" Don't obliterate windows layout by accident
+" https://vim.fandom.com/wiki/How_to_avoid_obliterating_window_layout
+nnoremap <C-W>O :echo "sucker"<CR>
+nnoremap <C-W>o :echo "sucker"<CR>
+nnoremap <C-W><C-O> :echo "sucker"<CR>
 
 set whichwrap+=<,>,h,l
 
