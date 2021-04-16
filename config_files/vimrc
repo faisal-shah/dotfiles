@@ -11,6 +11,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
+Plug 'junegunn/gv.vim'
+Plug 'junkblocker/git-time-lapse'
+Plug 'sodapopcan/vim-twiggy'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 Plug 'ludovicchabant/vim-gutentags'
@@ -250,6 +254,9 @@ set textwidth=79
 """"""""""""""""""""
 "" Plugin Related ""
 """"""""""""""""""""
+
+" Fugitive doesn't show date by default - so add that here
+let g:fugitive_summary_format="%as %an\t%s %d"
 
 " vim-sneak label mode
 let g:sneak#label = 1
