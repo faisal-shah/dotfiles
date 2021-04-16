@@ -1,7 +1,8 @@
 # Gets the download url for the latest release of a package provided via GitHub Releases
 # Usage: ghrelease USER REPO [PATTERN]
 ghrelease() {
-	curl -s "https://api.github.com/repos/$1/$2/releases/latest" | grep -o "http.*${3:-deb}"
+	curl -s "https://api.github.com/repos/$1/$2/releases/latest" | grep -o \
+    "\"http.*${3}\"" | cut -d "\"" -f 2
 }
 
 # Installs a local or remote(http/https) deb package and removes it after installation
