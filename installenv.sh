@@ -58,7 +58,7 @@ echo "Updating .bashrc"
 printf "\nexport HISTSIZE=\n" >> ~/.bashrc
 printf "export HISTFILSIZE=\n" >> ~/.bashrc
 printf "export HISTTIMEFORMAT=\"%%Y/%%m/%%d %%H:%%M:%%S:   \"\n" >> ~/.bashrc
-printf "export EDITOR=\"vim\"\n"
+printf "export EDITOR=\"vim\"\n" >> ~/.bashrc
 printf "### Disable Ctrl-S and Ctrl-Q\n" >> ~/.bashrc
 printf "[[ "'$-'" =~ i ]] && stty -ixoff -ixon\n" >> ~/.bashrc
 printf "###Fix startup delay\n###https://blog.lxgr.net/posts/2014/05/15/vim-tmux-startup-delay/\n" >> ~/.bashrc
@@ -109,7 +109,7 @@ git config --global alias.mc 'merge --continue'
 git config --global alias.co 'checkout'
 git config --global alias.cob 'checkout -b'
 git config --global alias.lg 'log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
-git config --global alias.la '"!git config -l | sed -r -n '\''s/alias.//p'\''"'
+git config --global alias.la '!git config -l | sed -r -n '"'s/alias.//p'"
 git config --global alias.p 'push'
 git config --global alias.po 'push origin'
 git config --global alias.puo 'push -u origin'
