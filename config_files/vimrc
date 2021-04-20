@@ -338,6 +338,9 @@ set textwidth=79
 let g:yoinkIncludeDeleteOperations = 1
 let g:yoinkSyncNumberedRegisters = 1
 
+" Peekaboo, make a wider window
+let g:peekaboo_window='vert bo 50new'
+
 " Fugitive doesn't show date by default - so add that here
 let g:fugitive_summary_format="%as %an\t%s %d"
 
