@@ -41,6 +41,8 @@ Plug 'brooth/far.vim'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'semanser/vim-outdated-plugins'
 Plug 'machakann/vim-highlightedyank'
+Plug 'svermeulen/vim-cutlass'
+Plug 'svermeulen/vim-yoink'
 
 call plug#end()
 
@@ -161,6 +163,18 @@ map T <Plug>Sneak_T
 " Git status
 nnoremap <Leader>g :Git<CR>
 
+" Cutlass.vim
+nnoremap x d
+xnoremap x d
+nnoremap xx dd
+nnoremap X D
+
+" Yoink.vim
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+
 """"""""""""""""""""""""""""""
 " Display
 """"""""""""""""""""""""""""""
@@ -255,6 +269,10 @@ set textwidth=79
 """"""""""""""""""""
 "" Plugin Related ""
 """"""""""""""""""""
+
+" vim-yoink
+let g:yoinkIncludeDeleteOperations = 1
+let g:yoinkSyncNumberedRegisters = 1
 
 " Fugitive doesn't show date by default - so add that here
 let g:fugitive_summary_format="%as %an\t%s %d"
