@@ -9,40 +9,104 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Sensible defaults
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-fugitive'
-Plug 'rbong/vim-flog'
-Plug 'junegunn/gv.vim'
-Plug 'junkblocker/git-time-lapse'
-Plug 'sodapopcan/vim-twiggy'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-dispatch'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'justinmk/vim-sneak'
-Plug 'inkarkat/vim-visualrepeat'
+
+" FZF, 'nuff said
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Use FZF when multiple tag matches are found
 Plug 'zackhsi/fzf-tags'
+
+" Jump to location with two characters
+Plug 'justinmk/vim-sneak'
+
+" Redefine delete, change, cut behavior
+Plug 'svermeulen/vim-cutlass'
+
+" Redefine yank behavior, keeps history of yanks. Works with cutlass.
+Plug 'svermeulen/vim-yoink'
+
+" Repeat command works with external plugins
+Plug 'tpope/vim-repeat'
+
+" Repeat normal mode commands with '.' in visual mode
+Plug 'inkarkat/vim-visualrepeat'
+
+" Helps to align text
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-slash'
+
+" Git integration
+Plug 'tpope/vim-fugitive'
+
+" Git branch/commit viewer, integrates with fugitive
+Plug 'rbong/vim-flog'
+
+" Git branch/commit viewer, integrates with fugitive
+Plug 'junegunn/gv.vim'
+
+" Git branching tool, integrates with fugitive
+Plug 'sodapopcan/vim-twiggy'
+
+" Git commit diff viewer
+Plug 'junkblocker/git-time-lapse'
+
+" Git merge helper
+Plug 'christoomey/vim-conflicted'
+
+" Use sign column to indicate diffs in version controlled files
+Plug 'mhinz/vim-signify'
+
+" Async support (:Make)
+Plug 'tpope/vim-dispatch'
+
+" Generate and manage tags
+Plug 'ludovicchabant/vim-gutentags'
+
+" View tags for current file (class viewer)
+Plug 'preservim/tagbar'
+
+" Snippet tool
+Plug 'SirVer/ultisnips'
+
+" Snippet library to go with ultisnips
+Plug 'honza/vim-snippets'
+
+" Peek at register contents with reference a register
 Plug 'junegunn/vim-peekaboo'
-Plug 'mbbill/undotree'
+
+" Visual undo history/tree
+Plug 'simnalamburt/vim-mundo'
+
+" Helps manage trailing whitespace
+Plug 'ntpeters/vim-better-whitespace'
+
+" Find and replace tool, interactive
+Plug 'brooth/far.vim'
+
+" Zoom in and out of a single window, maintaining window layouts
+Plug 'dhruvasagar/vim-zoom'
+
+" Highlight the yanked region momentarily
+Plug 'machakann/vim-highlightedyank'
+
+" Improves highlighting behavior with in-buffer search (/, *, etc ..)
+Plug 'junegunn/vim-slash'
+
+" Colorschemes
 Plug 'lifepillar/vim-solarized8'
 Plug 'sainnhe/gruvbox-material'
+
+" Statusline and bufferline
 Plug 'rbong/vim-crystalline'
-Plug 'christoomey/vim-conflicted'
-Plug 'mhinz/vim-signify'
+
+" Syntax and indentation support for many languages
 Plug 'sheerun/vim-polyglot'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'brooth/far.vim'
-Plug 'dhruvasagar/vim-zoom'
+
+" Check if plugins are outdated on startup
 Plug 'semanser/vim-outdated-plugins'
-Plug 'machakann/vim-highlightedyank'
-Plug 'svermeulen/vim-cutlass'
-Plug 'svermeulen/vim-yoink'
+
 
 call plug#end()
 
@@ -325,7 +389,9 @@ let g:gutentags_ctags_exclude = [
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 let g:strip_whitelines_at_eof=1
-let g:strip_whitespace_confirm=0
+let g:strip_whitespace_confirm=1
+" Blacklist doesn't really work :( https://github.com/ntpeters/vim-better-whitespace/issues/137
+let g:better_whitespace_filetypes_blacklist=['fugitive', 'diff', 'gitcommit', 'unite', 'qf', 'help']
 
 " Fzf :Buffers - jump to existing window if open
 " let g:fzf_buffers_jump=1
