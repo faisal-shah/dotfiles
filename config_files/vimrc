@@ -159,6 +159,11 @@ set undolevels=1000
 " set leader key, default is \, but set anyways
 let mapleader = "\\"
 
+" For fugitive commit buffers, close folds by default, and use the = mapping
+" that I'm used to in the GStatus window to toggle folds.
+autocmd FileType git :set foldmethod=syntax
+autocmd FileType git nmap <buffer> = za
+
 " movement by screen line instead of file line (for text wrap)
 nnoremap j gj
 nnoremap <down> gj
