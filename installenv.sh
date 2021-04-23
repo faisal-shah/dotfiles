@@ -108,7 +108,8 @@ git config --global alias.ma 'merge --abort'
 git config --global alias.mc 'merge --continue'
 git config --global alias.co 'checkout'
 git config --global alias.cob 'checkout -b'
-git config --global alias.lg 'log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
+git config --global alias.lg 'log --graph --decorate-refs-exclude=refs/tags'
+git config --global alias.lga 'log --graph --decorate-refs-exclude=refs/tags --all --author-date-order'
 git config --global alias.la '!git config -l | sed -r -n '"'s/alias.//p'"
 git config --global alias.p 'push'
 git config --global alias.po 'push origin'
@@ -126,8 +127,8 @@ git config --global delta.line-numbers "true"
 git config --global delta.side-by-side "true"
 git config --global delta.navigate "true"
 git config --global delta.keep-plus-minus-markers "true"
-git config --global delta.inspect-raw-lines "true"
 git config --global diff.tool "vimdiff"
 git config --global diff.colorMoved "default"
 git config --global difftool.prompt "false"
 git config --global interactive.diffFilter "delta --color-only"
+git config --global format.pretty '%Cred%h%Creset - %C(yellow)%d%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%<(120,trunc)%s%n%n'
