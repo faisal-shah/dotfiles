@@ -28,6 +28,12 @@ Plug 'svermeulen/vim-cutlass'
 " Redefine yank behavior, keeps history of yanks. Works with cutlass.
 Plug 'svermeulen/vim-yoink'
 
+" Pairwise mapping for lots of stuff
+Plug 'tpope/vim-unimpaired'
+
+" Sensible defaults for netrw
+Plug 'tpope/vim-vinegar'
+
 " Repeat command works with external plugins
 Plug 'tpope/vim-repeat'
 
@@ -57,7 +63,7 @@ Plug 'stsewd/fzf-checkout.vim'
 
 " Git branch/commit viewer, integrates with fugitive
 " Plug 'rbong/vim-flog'
-Plug 'faisal-shah/vim-flog', { 'branch': 'feat/author-date-order' }
+Plug 'faisal-shah/vim-flog', { 'branch': 'ignore-user-pretty' }
 
 " Git branch/commit viewer, integrates with fugitive
 Plug 'junegunn/gv.vim'

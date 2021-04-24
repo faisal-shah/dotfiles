@@ -131,4 +131,4 @@ git config --global diff.tool "vimdiff"
 git config --global diff.colorMoved "default"
 git config --global difftool.prompt "false"
 git config --global interactive.diffFilter "delta --color-only"
-git config --global format.pretty '%Cred%h%Creset - %C(yellow)%d%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%<(120,trunc)%s%n%n'
+git config --global format.pretty '%Cred%h%Creset - %C(yellow)%d%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%<(120,trunc)%s%n'
