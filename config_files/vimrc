@@ -156,8 +156,11 @@ endif
 " Case sensitive matching for searching tag file. Much quicker!
 set tagcase=match
 
-" split equalization upon window resize
-autocmd VimResized * wincmd =
+augroup resize
+    autocmd!
+    " split equalization upon window resize
+    autocmd VimResized * wincmd =
+augroup END
 
 " open splits to the right and bottom
 set splitbelow
@@ -173,6 +176,13 @@ endif
 set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
+
+augroup spell_check
+    autocmd!
+    " enable spell check for certain filetypes
+    autocmd FileType markdown,gitcommit setlocal spell
+    autocmd FileType markdown,gitcommit setlocal complete+=kspell
+augroup END
 
 """"""""""""""""""""""""""""""
 " Key Mappings
@@ -308,8 +318,12 @@ set synmaxcol=300
 " Colortheme options
 set termguicolors
 set background=dark
-" Per recommendation by solarized8 plugin author..
-autocmd vimenter * ++nested colorscheme gruvbox-material
+
+augroup load_colorscheme
+    autocmd!
+    " Per recommendation by solarized8 plugin author..
+    autocmd vimenter * ++nested colorscheme gruvbox-material
+augroup END
 
 set mouse=a
 " ttymouse=sgr needed, otherwise mouse > column 220 or so doesn't work
