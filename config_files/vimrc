@@ -62,8 +62,8 @@ Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'stsewd/fzf-checkout.vim'
 
 " Git branch/commit viewer, integrates with fugitive
-" Plug 'rbong/vim-flog'
-Plug 'faisal-shah/vim-flog', { 'branch': 'ignore-user-pretty' }
+Plug 'rbong/vim-flog'
+" Plug 'faisal-shah/vim-flog', { 'branch': 'ignore-user-pretty' }
 
 " Git branch/commit viewer, integrates with fugitive
 Plug 'junegunn/gv.vim'
@@ -583,3 +583,8 @@ command! FlogFzfDir call fzf#run(fzf#wrap({
 function! s:invoke_flogpath(path) abort
     execute 'Flog -path=' . a:path
 endfunction
+
+augroup flogtab
+    autocmd!
+    autocmd FileType floggraph nnoremap <buffer> <silent> <Tab> :<C-U>call flog#run_tmp_command('vertical belowright Git show --format=medium %h -- %p')<CR>
+  augroup END
