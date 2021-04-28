@@ -190,6 +190,10 @@ augroup spell_check
     autocmd FileType markdown,gitcommit setlocal complete+=kspell
 augroup END
 
+function! UpdateMyStatusLine()
+    let &stl=&stl
+endfunction
+
 """"""""""""""""""""""""""""""
 " Key Mappings
 """"""""""""""""""""""""""""""
@@ -409,6 +413,13 @@ let g:sneak#label = 1
 " specify version control systems for signify
 let g:signify_vcs_list = [ 'git', 'tfs' ]
 
+" Gutentags update statusline when updating and updated
+augroup MyGutentagsStatusLineRefresher
+    autocmd!
+    autocmd User GutentagsUpdating call UpdateMyStatusLine()
+    autocmd User GutentagsUpdated call UpdateMyStatusLine()
+augroup END
+
 " gutentags don't generate on new, rather generate on missing
 let g:gutentags_generate_on_new=0
 let g:gutentags_generate_on_missing=1
@@ -487,7 +498,8 @@ function! StatusLine(current, width)
     let l:s = ''
 
     if a:current
-        let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+        let l:zoom = !empty(zoom#statusline()) ? '[Z]' :  ''
+        let l:s .= crystalline#mode() . l:zoom . crystalline#right_mode_sep('')
     else
         let l:s .= '%#CrystallineInactive#'
     endif
@@ -502,7 +514,12 @@ function! StatusLine(current, width)
         let l:s .= crystalline#left_mode_sep('')
     endif
     if a:width > 80
-        let l:s .= ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+        if a:current
+            let l:tags = !empty(gutentags#statusline()) ? '**ctags** ' : ' '
+            let l:s .= l:tags.'[%{&ff}] %l/%L %c%V %P '
+        else
+            let l:s .= ' %P '
+        endif
     else
         let l:s .= ' '
     endif
@@ -519,6 +536,12 @@ let g:crystalline_enable_sep = 1
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
 let g:crystalline_theme = 'molokai'
+let g:crystalline_mode_labels = {
+            \ 'n' : 'N',
+            \ 'i' : 'I',
+            \ 'v' : 'V',
+            \ 'R' : 'R',
+            \ }
 
 set showtabline=2
 set guioptions-=e
