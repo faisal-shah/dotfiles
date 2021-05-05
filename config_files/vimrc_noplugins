@@ -74,6 +74,8 @@ else
     set ttymouse=xterm2
 end
 
+nnoremap <Leader>s :grep! -r "\b<C-R><C-W>\b" .<CR>:cw 50<CR>
+
 " clear highlight
 nnoremap <Leader><Space> :noh<Return>:<Backspace>
 nnoremap <Leader>e :e **/*
