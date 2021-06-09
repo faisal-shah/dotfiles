@@ -55,7 +55,8 @@ cd ..
 
 echo "****************"
 echo "Updating .bashrc"
-printf "\nexport HISTSIZE=\n" >> ~/.bashrc
+printf "\nset -o ignoreeof\n" >> ~/.bashrc
+printf "export HISTSIZE=\n" >> ~/.bashrc
 printf "export HISTFILSIZE=\n" >> ~/.bashrc
 printf "export HISTTIMEFORMAT=\"%%Y/%%m/%%d %%H:%%M:%%S:   \"\n" >> ~/.bashrc
 printf "export EDITOR=\"vim\"\n" >> ~/.bashrc
