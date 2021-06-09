@@ -101,6 +101,7 @@ git config --global alias.br 'branch'
 git config --global alias.ba 'branch -av'
 git config --global alias.bd 'branch -d'
 git config --global alias.bD 'branch -D'
+git config --global alias.brhist 'for-each-ref --sort=committerdate --format='"'"'%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"'"
 git config --global alias.ci 'commit'
 git config --global alias.cia 'commit --amend'
 git config --global alias.f 'fetch -p'
