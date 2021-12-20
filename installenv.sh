@@ -91,6 +91,7 @@ mkdir -p ~/.local/share/konsole
 cp ./local/share/konsole/* ~/.local/share/konsole
 cp config_files/tmux.conf ~/.tmux.conf
 cp config_files/bash_aliases ~/.bash_aliases
+cp config_files/gdbinit ~/.gdbinit
 
 echo "************************"
 echo "Adding git configuration"
