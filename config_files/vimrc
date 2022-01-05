@@ -183,6 +183,9 @@ set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
 
+" store swapfiles somewhere
+set directory=~/.vim/swap/
+
 augroup spell_check
     autocmd!
     " enable spell check for certain filetypes
@@ -430,14 +433,17 @@ let g:gutentags_generate_on_missing=1
 "        \ '.git': 'git ls-files',
 "        \ },
 "        \ }
+
 let g:gutentags_ctags_exclude = [
             \ 'build',
             \ 'ChibiOS_18.2.x',
+            \ 'ChibiOS_19.1.x',
             "\ 'ChibiOS_20.x.x',
             \ 'dist',
             \ '*sites/*/files/*',
             \ 'bin',
             \ 'cache',
+            \ 'docs',
             \ '*.map',
             \ '*.bak',
             \ '*.zip',
@@ -610,4 +616,28 @@ endfunction
 augroup flogtab
     autocmd!
     autocmd FileType floggraph nnoremap <buffer> <silent> <Tab> :<C-U>call flog#run_tmp_command('vertical belowright Git show --format=medium %h -- %p')<CR>
-  augroup END
+augroup END
+
+function! s:test_sink(identifier, selection) abort
+    let l:count = split(a:selection)[0]
+    execute l:count . 'tag' a:identifier
+endfunction
+
+function! s:test() abort
+    let source_lines = []
+    let identifier = expand('<cword>')
+    let tagresults = taglist(identifier)
+    let idx = 1
+    for tr in tagresults
+        call add(source_lines, idx . "\t" . tr['filename'] . "\t" . tr['cmd'])
+        let idx = idx + 1
+    endfor
+    call fzf#run(fzf#wrap(fzf#vim#with_preview({
+                \ 'source': source_lines,
+                \ 'sink': funcref('s:test_sink', [identifier]),
+                \ "placeholder": "--tag {2}:{3..}",
+                \ 'window': {'height': 0.9, 'width': 0.9},
+                \ 'options': ["--delimiter", "\t"],
+                \ })))
+endfunction
+command! TestTagJump call s:test()
