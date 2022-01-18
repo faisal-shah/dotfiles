@@ -7,8 +7,8 @@ source local/bin/my-utils.sh
 
 echo "***********************"
 echo "Installing apt packages"
-sudo add-apt-repository --yes ppa:jonathonf/vim
-sudo add-apt-repository --yes ppa:git-core/ppa
+sudo -E add-apt-repository --yes ppa:jonathonf/vim
+sudo -E add-apt-repository --yes ppa:git-core/ppa
 sudo apt-get update
 sudo apt install --yes build-essential libncurses6 gdebi tree curl \
                     python3-pip ripgrep xsel xclip ncdu \
