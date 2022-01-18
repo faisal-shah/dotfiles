@@ -93,6 +93,15 @@ cp config_files/tmux.conf ~/.tmux.conf
 cp config_files/bash_aliases ~/.bash_aliases
 cp config_files/gdbinit ~/.gdbinit
 
+echo "******************************"
+echo "Install ptage (parallel ctags)"
+wget -P ~/.local/bin $(ghrelease dalance ptags "ptags.*x86_64-lnx.zip") &&
+    unzip $(find ~/.local/bin -iname ptags*x86_64-lnx.zip) -d ~/.local/bin/ &&
+    rm ~/.local/bin/ptags*x86_64-lnx.zip &&
+    ptags --completion bash &&
+    mv ptags.bash ~/.local/bin &&
+    printf "\n[ -f ~/.local/bin/ptags.bash ] && source ~/.local/bin/ptags.bash" >> ~/.bashrc
+
 echo "************************"
 echo "Adding git configuration"
 git config --global core.editor "vim"
