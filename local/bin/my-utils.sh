@@ -1,3 +1,8 @@
+# Runs a program in the backgroud, and redirects stdout and sterr to /dev/null
+BG() {
+    eval "$@"" >/dev/null 2>&1 &"
+}
+
 # Gets the download url for the latest release of a package provided via GitHub Releases
 # Usage: ghrelease USER REPO [PATTERN]
 ghrelease() {
