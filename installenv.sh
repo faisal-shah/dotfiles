@@ -102,6 +102,16 @@ wget -P ~/.local/bin $(ghrelease dalance ptags "ptags.*x86_64-lnx.zip") &&
     mv ptags.bash ~/.local/bin &&
     printf "\n[ -f ~/.local/bin/ptags.bash ] && source ~/.local/bin/ptags.bash" >> ~/.bashrc
 
+echo "***********************************"
+echo "Install ranger-plug, and ranger-fzf"
+pip install --user git+https://github.com/faisal-shah/ranger-plug
+if [[ -z "$XDG_CONFIG_HOME" ]]; then
+    mkdir -p ~/.config/ranger/plugins
+else
+    mkdir -p "$XDG_CONFIG_HOME"/ranger/plugins
+fi
+ranger-plug install github.com/faisal-shah/ranger-fzf
+
 echo "************************"
 echo "Adding git configuration"
 git config --global core.editor "vim"
