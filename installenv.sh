@@ -69,6 +69,7 @@ printf "source ~/.local/bin/cd_git_root.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/fzf_git_functions.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/fzf_git_keybindings.sh\n" >> ~/.bashrc
 printf "source ~/.local/bin/my-utils.sh\n" >> ~/.bashrc
+printf "source ~/.local/bin/ranger_utils.sh\n" >> ~/.bashrc
 printf "if ! grep -q Microsoft /proc/version; then\n" >> ~/.bashrc
 printf "    source ~/.local/bin/fzf-bash-completion.sh\n" >> ~/.bashrc
 printf "    bind -x '\"\\\\t\": fzf_bash_completion'\n" >> ~/.bashrc
@@ -92,6 +93,7 @@ cp ./local/share/konsole/* ~/.local/share/konsole
 cp config_files/tmux.conf ~/.tmux.conf
 cp config_files/bash_aliases ~/.bash_aliases
 cp config_files/gdbinit ~/.gdbinit
+cp config_files/ranger_utils.sh ~/.local/bin
 
 echo "******************************"
 echo "Install ptage (parallel ctags)"
@@ -102,8 +104,8 @@ wget -P ~/.local/bin $(ghrelease dalance ptags "ptags.*x86_64-lnx.zip") &&
     mv ptags.bash ~/.local/bin &&
     printf "\n[ -f ~/.local/bin/ptags.bash ] && source ~/.local/bin/ptags.bash" >> ~/.bashrc
 
-echo "***********************************"
-echo "Install ranger-plug, and ranger-fzf"
+echo "*******************************"
+echo "Install ranger-plug, ranger-fzf"
 pip install --user git+https://github.com/faisal-shah/ranger-plug
 if [[ -z "$XDG_CONFIG_HOME" ]]; then
     mkdir -p ~/.config/ranger/plugins
