@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+# Detect if used in a pipe, otherwise check for file argument
+# https://stackoverflow.com/questions/19408649/pipe-input-into-a-script
+
+if [ -p /dev/stdin ]; then
+    awk '!x[$0]++'
+else
+    if [ -f "$1" ]; then
+        awk '!x[$0]++' "$1"
+    fi
+fi
