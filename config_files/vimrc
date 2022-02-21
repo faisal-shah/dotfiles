@@ -135,6 +135,9 @@ Plug 'sheerun/vim-polyglot'
 " Check if plugins are outdated on startup
 Plug 'semanser/vim-outdated-plugins'
 
+" Clang format
+Plug 'rhysd/vim-clang-format'
+
 
 call plug#end()
 
