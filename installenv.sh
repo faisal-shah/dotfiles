@@ -12,7 +12,7 @@ sudo -E add-apt-repository --yes ppa:git-core/ppa
 sudo apt-get update
 sudo apt install --yes build-essential libncurses6 gdebi tree curl \
                     python3-pip ripgrep xsel xclip ncdu \
-                    universal-ctags fd-find ranger cowsay fortune git vim-gtk3
+                    universal-ctags fd-find ranger cowsay fortune git vim-gtk3 moreutils
 
 # Don't install powerline if in WSL
 if ! grep -q Microsoft /proc/version; then
