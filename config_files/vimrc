@@ -39,6 +39,7 @@ Plug 'tpope/vim-repeat'
 
 " Repeat normal mode commands with '.' in visual mode
 Plug 'inkarkat/vim-visualrepeat'
+Plug 'inkarkat/vim-ingo-library'
 
 " Helps to align text
 Plug 'junegunn/vim-easy-align'
@@ -127,7 +128,8 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'sainnhe/gruvbox-material'
 
 " Statusline and bufferline
-Plug 'rbong/vim-crystalline'
+" Plug 'rbong/vim-crystalline'
+Plug 'faisal-shah/vim-crystalline'
 
 " Syntax and indentation support for many languages
 Plug 'sheerun/vim-polyglot'
@@ -514,7 +516,7 @@ function! StatusLine(current, width)
     endif
     let l:s .= ' %f%h%w%m%r '
     if a:current
-        let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+        let l:s .= crystalline#right_sep('', 'Fill') . ' %{FugitiveHead()}'
     endif
 
     let l:s .= '%='
