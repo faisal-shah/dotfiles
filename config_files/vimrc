@@ -128,8 +128,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'sainnhe/gruvbox-material'
 
 " Statusline and bufferline
-" Plug 'rbong/vim-crystalline'
-Plug 'faisal-shah/vim-crystalline'
+Plug 'rbong/vim-crystalline'
 
 " Syntax and indentation support for many languages
 Plug 'sheerun/vim-polyglot'
