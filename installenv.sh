@@ -114,6 +114,15 @@ else
 fi
 ranger-plug install github.com/faisal-shah/ranger-fzf
 
+echo "********************"
+echo "Install ExcelCompare"
+echo "********************"
+curl -o ./ExcelCompare.zip -L 'https://github.com/na-ka-na/ExcelCompare/releases/download/0.7.0/ExcelCompare-0.7.0.zip'
+unzip  ExcelCompare.zip -d ~/opt/
+rm -f ExcelCompare.zip
+chmod +x ~/opt/ExcelCompare-0.7.0/excel_cmp
+ln -s ~/opt/ExcelCompare-0.7.0/excel_cmp ~/.local/bin/excel_cmp
+
 echo "************************"
 echo "Adding git configuration"
 git config --global core.editor "vim"
@@ -158,3 +167,4 @@ git config --global interactive.diffFilter "delta --color-only"
 git config --global format.pretty '%Cred%h%Creset - %C(yellow)%d%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%<(120,trunc)%s%n'
 git config --global diff.algorithm 'histogram'
 git config --global merge.conflictstyle 'zdiff3'
+git config --global diff.xlsx.command "excel_cmp_git"
